@@ -39,11 +39,11 @@ FIGURAS = ['''
 
 Lista_palabras = {
     1:["E","L","E","F","A","N","T","E"],
-    2:"CTHULHU",
-    3:"AUSTRALOPITHECUS",
-    4:"MICROSCOPIO",
-    5:"VENTILADOR",
-    6:"MONSTER"
+    2:["C","T","H","U","L","H","U"],
+    3:["A","U","S","T","R","A","L","O","P","I","T","H","E","C","U","S"],
+    4:["M","I","C","R","O","S","C","O","P","I","O"],
+    5:["V","E","N","T","I","L","A","D","O","R"],
+    6:["M","O","N","S","T","E","R"]
 }
 respuesta = []
 
@@ -60,7 +60,7 @@ def actualiza_tablero(letras_incognitas,letras_adivinadas,palabra_secreta):
         return 0
 
 def preguntar_letra():
-    letra = input("Ingrese una letra: ")
+    letra = input("\n Ingrese una letra: ")
     letra = letra.upper()
     print("\n\n")
     return letra
@@ -80,8 +80,7 @@ print("""*****************************************
 *****************************************""")
 
 print("A JUGAR!!!")
-#key = random.randint(1,6)
-key=1
+key = random.randint(1,6)
 palabra = obtener_palabra_aleatoria(key)
 letras_adivinadas = 0
 letras_incognitas = len(palabra)
