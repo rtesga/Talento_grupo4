@@ -1,0 +1,9 @@
+pi = 3.141592654
+radio = 3
+base = 4
+altura = 4 
+lado_A = 3
+lado_B = 5
+precio_lista = 24.95
+envio_base = 3
+envio_marginal = 0.75
