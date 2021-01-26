@@ -1,0 +1,60 @@
+SELECT * FROM PROFESOR
+
+select sum(sueldo) from profesor;
+
+select max(sueldo) from profesor;
+
+select avg(sueldo)from profesor  where nombre = 'Gerardo';
+
+select sum(sueldo) from profesor where id>20;
+
+select nombre,apellido, sum(sueldo) from profesor group by nombre, apellido
+
+insert into profesor values  ('33','','','AULA  MALEN-KAI WEÑI','01-06-1998',450000);
+
+SELECT id, nombre FROM profesor ORDER BY id;
+
+select * from profesor order by id limit 10;
+
+select  min (sueldo)from profesor  where fecha_de_contratacion >='2018-02-01' 
+
+update profesor set id=32 where id=35;
+
+select avg(sueldo) from (select profesor,sueldo from profesor order by fecha_de_contratacion desc limit 10) as t;
+
+alter table profesor  add constraint sueldo check (sueldo<700000);
+
+DELETE FROM profesor WHERE id=33;
+
+ 
+ALTER TABLE profesor ALTER COLUMN nombre SET NOT NULL;
+
+SELECT id,escuela FROM PROFESOR
+
+alter table Suscripcion rename column precio to precio_suscripcion;
+
+ALTER TABLE productos_ventas ADD COLUMN cantidad_productos numeric;
+
+ALTER TABLE cliente ADD id_suscripcion varchar (255);
+
+UPDATE cliente SET id_suscripcion = '10258385-2' WHERE id='2'; (Cambiara  10258385-2 en la columna id_suscripcion el el registro 2 de la columna id)
+
+UPDATE cliente set id_suscripcion = '10258385-2' llenará la columna id_suscripcion con el valor 10258385-2
+
+select id, nombre, apellido, telefono, email, día_de_pago, id_suscripcion  from cliente order by id
+
+ALTER TABLE suscripcion ALTER COLUMN id_suscripcion TYPE varchar(255);( cambia a texto columna id_suscripcion)
+
+ALTER TABLE suscripcion DROP id_suscripcion; (elimina columna id_suscripcion)
+
+delete from suscripcion; (borra los registros de la bd suscripcion)
+
+delete from usuarios  where nombre='Marcelo'; (elimina de la bd usuarios el registro Marcelo de la tabla nombre)
+
+alter table suscripcion add constraint fk_id_suscripcion_suscripcion foreign key (id_suscripcion) references categoria (id_categoria);
+
+ALTER TABLE venta DROP CONSTRAINT fk_producto;(elimina la relaccion fk)
+
+
+
+

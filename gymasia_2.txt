@@ -1,0 +1,155 @@
+CREATE TABLE suscripcion (
+    id_suscripcion int NOT NULL,
+    nombre_suscripcion varchar (255),
+    precio_suscripcion int,
+    PRIMARY KEY (id_suscripcion)
+  
+);
+insert into suscripcion values  (1,'mensual full',20000);
+insert into suscripcion values  (2,'semanal full',2000);
+insert into suscripcion values  (3,'estudiante full',10000);
+insert into suscripcion values  (4,'tres veces a la semanal',15600);
+insert into suscripcion values  (5,'plan oficina',20000);
+insert into suscripcion values  (6,'plan covid',18000);
+
+select * from suscripcion;
+
+CREATE TABLE cliente (
+    id_cliente int NOT NULL,
+    id_suscripcion int NOT NULL,
+    nombre_cliente varchar (255),
+    apellido_cliente varchar (255),
+    telefono numeric,
+    email varchar (255),
+    dia_pago_suscripcion date,
+    PRIMARY KEY (id_cliente),
+    usuario_activo boolean,
+    FOREIGN KEY (id_suscripcion) REFERENCES suscripcion(id_suscripcion)
+);
+
+select * from cliente;
+
+insert into cliente values  (1,1,'Miguel','Vázquez','22159001401','Miguel.Vázquez@gmail.com','01-02-2021');
+insert into cliente values  (2,2,'Pascual','Ibarra','22159001402','Pascual.Ibarra@gmail.com','01-02-2021');
+insert into cliente values  (3,3,'Humberto','Velasco','22159001403','Humberto.Velasco@gmail.com','01-02-2021');
+insert into cliente values  (4,4,'Miguel','Díaz','22159001404','Miguel.Díaz@gmail.com','01-02-2021');
+insert into cliente values  (5,5,'Adan','Arias','22159001405','Adan.Arias@gmail.com','01-02-2021');
+insert into cliente values  (6,6,'Francisco','Sánchez','22159001406','Francisco.Sánchez@gmail.com','01-02-2021');
+insert into cliente values  (7,3,'Marcela','Toro','22159001407','Marcela.Toro@gmail.com','01-02-2021');
+insert into cliente values  (8,4,'Fredy','Pérez','22159001408','Fredy.Pérez@gmail.com','01-02-2021');
+insert into cliente values  (9,5,'Héctor','Guajardo','22159001409','Héctor.Guajardo@gmail.com','01-02-2021');
+insert into cliente values  (10,6,'Francisco','Alarcon','22159001410','Francisco.Alarcon@gmail.com','01-02-2021');
+insert into cliente values  (11,3,'Clemente','Diaz','22159001411','Clemente.Diaz@gmail.com','01-02-2021');
+insert into cliente values  (12,4,'Julio','Díaz','22159001412','Julio.Díaz@gmail.com','01-02-2021');
+insert into cliente values  (13,5,'Carlos','Díaz','22159001413','Carlos.Díaz@gmail.com','01-02-2021');
+insert into cliente values  (14,6,'Juan','Núñez','22159001414','Juan.Núñez@gmail.com','01-02-2021');
+insert into cliente values  (15,4,'José','Vivaldo','22159001415','José.Vivaldo@gmail.com','01-02-2021');
+insert into cliente values  (16,5,'Miguel','Velasco','22159001416','Miguel.Velasco@gmail.com','01-02-2021');
+insert into cliente values  (17,6,'Jesús','Barrios','22159001417','Jesús.Barrios@gmail.com','01-02-2021');
+insert into cliente values  (18,1,'Gabriel','Dominguez','22159001418','Gabriel.Dominguez@gmail.com','01-02-2021');
+insert into cliente values  (19,2,'Julián','Briz','22159001419','Julián.Briz@gmail.com','01-02-2021');
+insert into cliente values  (20,2,'Juan','Vergara','22159001420','Juan.Vergara@gmail.com','01-02-2021');
+
+CREATE TABLE transaccion (
+    id_transaccion int NOT NULL,
+    id_cliente int NOT NULL,
+    fecha_transaccion date,
+    PRIMARY KEY (id_transaccion),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+);
+
+
+select * from transaccion
+
+insert into transaccion values  (1,1,'01-01-2021');
+insert into transaccion values  (2,1,'05-01-2021');
+insert into transaccion values  (3,2,'10-01-2021');
+insert into transaccion values  (4,3,'12-01-2021');
+insert into transaccion values  (5,4,'15-01-2021');
+insert into transaccion values  (6,5,'20-01-2021');
+insert into transaccion values  (7,5,'26-01-2021');
+insert into transaccion values  (8,7,'27-01-2021');
+insert into transaccion values  (9,7,'28-01-201');
+
+CREATE TABLE producto (
+    id_producto int NOT NULL,
+    nombre_producto varchar (255),
+    precio_producto numeric,
+    PRIMARY KEY (id_producto)
+    
+);
+
+select * from producto;
+
+insert into producto values  (1,'bebidas',1000);
+insert into producto values  (2,'galletas',500);
+insert into producto values  (3,'jugos',500);
+insert into producto values  (4,'camisetas',15000);
+insert into producto values  (5,'reloj deportivo',25000);
+insert into producto values  (6,'cuerdas',15000);
+insert into producto values  (7,'mochila',26000);
+insert into producto values  (8,'guantes fitness',20000);
+insert into producto values  (9,'bolso sport',35000);
+insert into producto values  (10,'guantes pesas',26000);
+
+CREATE TABLE venta (
+    id_transaccion int NOT NULL,
+    id_producto int NOT NULL,
+    cantidad numeric,
+    FOREIGN KEY (id_transaccion) REFERENCES transaccion(id_transaccion),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+    
+);
+
+select * from venta;
+
+insert into venta values ('1','1',1);
+insert into venta values ('1','2',2);
+insert into venta values ('3','3',3);
+insert into venta values ('4','4',1);
+insert into venta values ('4','5',4);
+insert into venta values ('6','6',2);
+insert into venta values ('7','7',4);
+insert into venta values ('8','8',1);
+insert into venta values ('9','9',1);
+
+CREATE TABLE pase_diario (
+    id_pase_diario int NOT NULL,
+    id_cliente int NOT NULL,
+    precio_suscripcion int,
+    fecha_pase_diario date,
+    PRIMARY KEY (id_pase_diario),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+   
+);
+
+select * from pase_diario;
+
+ALTER TABLE pase_diario ADD COLUMN cantidad_productos varchar (255);
+
+alter table pase_diario rename column cantidad_productos to nombre_pase_diario;
+
+insert into pase_diario values  (1,1,2000,'01-01-2021','baile entretenido');
+insert into pase_diario values  (2,1,3500,'01-01-2021','aerobox');
+insert into pase_diario values  (3,2,4000,'10-01-2021',' Kickboxing');
+insert into pase_diario values  (4,3,2000,'15-01-2021','máquinas');
+insert into pase_diario values  (5,4,6000,'26-01-2021','full');
+
+CREATE TABLE categoria (
+    id_categoria int NOT NULL,
+    id_pase_diario int NOT NULL,
+    nombre_categoria varchar (255),
+    precio_categoria int,
+    PRIMARY KEY (id_categoria),
+    FOREIGN KEY (id_pase_diario) REFERENCES pase_diario(id_pase_diario)
+   
+);
+
+select * from categoria
+
+insert into categoria values  (1,1,'baile entretenido',2000);
+insert into categoria values  (2,1,'aerobox',3500);
+insert into categoria values  (3,2, 'Kickboxing',4000);
+insert into categoria values  (4,3,'máquinas',2000);
+insert into categoria values  (5,4,'full',6000);
+

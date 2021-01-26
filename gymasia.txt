@@ -1,0 +1,32 @@
+select * from cliente;
+select * from suscripcion;
+select * from categoria;
+
+ALTER TABLE suscripcion ALTER COLUMN id_suscripcion TYPE varchar(255);
+
+
+alter table cliente add primary key (id_cliente);
+
+ALTER TABLE cliente ADD FOREIGN KEY (id_suscripcion) REFERENCES suscripcion (id_suscripcion);
+
+ALTER TABLE Orders ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+select * from information_schema.table_constraints  where table_name = 'cliente';
+
+SELECT * FROM information_schema.table_constraints;
+
+ALTER TABLE suscripcion DROP precio_suscripcion;
+
+ALTER TABLE suscripcion ADD precio_suscripcion varchar (255);
+
+delete from suscripcion;
+
+update suscripcion set id_suscripcion='c1' where precio_suscripcion=2000;
+
+
+insert into suscripcion values  ('c2','Miguel',15000);
+
+
+insert into categoria values  ('c1','diario',2000);
+insert into categoria values  ('c2','mensual',15000);
+insert into categoria values  ('c3','anual',156000);
